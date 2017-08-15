@@ -1,6 +1,6 @@
 # `gjson-benchmarks`
 
-Benchmarks for [GJSON](https://github.com/tidwall/gjson-benchmarks)
+Benchmarks for [GJSON](https://github.com/tidwall/gjson)
 alongside [encoding/json](https://golang.org/pkg/encoding/json/), 
 [ffjson](https://github.com/pquerna/ffjson), 
 [EasyJSON](https://github.com/mailru/easyjson),
