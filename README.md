@@ -1,8 +1,8 @@
 # `gjson-benchmarks`
 
 Benchmarks for [GJSON](https://github.com/tidwall/gjson)
-alongside [encoding/json](https://golang.org/pkg/encoding/json/), 
-[ffjson](https://github.com/pquerna/ffjson), 
+alongside [encoding/json](https://golang.org/pkg/encoding/json/),
+[ffjson](https://github.com/pquerna/ffjson),
 [EasyJSON](https://github.com/mailru/easyjson),
 [jsonparser](https://github.com/buger/jsonparser),
 and [json-iterator](https://github.com/json-iterator/go)
@@ -42,7 +42,7 @@ JSON document used:
       "width": 500,
       "height": 500
     },
-    "image": { 
+    "image": {
       "src": "Images/Sun.png",
       "hOffset": 250,
       "vOffset": 250,
@@ -87,3 +87,29 @@ widget.text.size
 
 Last run: May 10, 2017
 
+## Usage
+
+If you desire to run this current benchmarks on your local computer,
+you need to install ``go`` and ``dep``.
+
+```sh
+# install go
+brew install go
+mkdir -p ~/go/src
+export GOPATH=~/go
+# install dep
+brew install dep
+```
+
+Then you can get the repo and run the benchmarks
+
+```sh
+# get the repo source files
+go get -u github.com/tidwall/gjson-benchmarks
+# go to the sources files
+cd $GOPATH/src/github.com/tidwall/gjson-benchmarks
+# make sure you have the same packages version
+dep ensure
+# finally run the tests
+go test -v -bench=.
+```
