@@ -545,7 +545,7 @@ func BenchmarkJSONIterator(t *testing.B) {
 	t.ResetTimer()
 	for i := 0; i < t.N; i++ {
 		for j := 0; j < len(benchPaths); j++ {
-			iter := jsoniter.ParseString(exampleJSON)
+			iter := jsoniter.ParseString(jsoniter.ConfigDefault, exampleJSON)
 			jsoniterWidget(t, iter, j)
 		}
 	}
