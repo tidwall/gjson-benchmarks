@@ -1,0 +1,62 @@
+name                    time/op
+GJSONGet-8               302ns ± 1%
+GJSONGetMany4Paths-8     313ns ± 2%
+GJSONGetMany8Paths-8     324ns ± 1%
+GJSONGetMany16Paths-8    337ns ± 1%
+GJSONGetMany32Paths-8    335ns ± 2%
+GJSONGetMany64Paths-8    340ns ± 3%
+GJSONGetMany128Paths-8   351ns ± 1%
+GJSONUnmarshalMap-8     3.55µs ± 3%
+GJSONUnmarshalStruct-8  3.31µs ± 2%
+JSONUnmarshalMap-8      7.12µs ± 1%
+JSONUnmarshalStruct-8   4.84µs ± 2%
+JSONDecoder-8           10.9µs ± 1%
+FFJSONLexer-8           2.69µs ± 7%
+EasyJSONLexer-8          846ns ± 2%
+JSONParserGet-8          332ns ±10%
+JSONIterator-8           914ns ± 1%
+ConvertNone-8           18.7µs ± 3%
+ConvertGet-8            29.8µs ± 2%
+ConvertGetBytes-8       18.7µs ± 2%
+
+name                    alloc/op
+GJSONGet-8               0.00B     
+GJSONGetMany4Paths-8     56.0B ± 0%
+GJSONGetMany8Paths-8     56.0B ± 0%
+GJSONGetMany16Paths-8    56.0B ± 0%
+GJSONGetMany32Paths-8    56.0B ± 0%
+GJSONGetMany64Paths-8    64.0B ± 0%
+GJSONGetMany128Paths-8   64.0B ± 0%
+GJSONUnmarshalMap-8     1.92kB ± 0%
+GJSONUnmarshalStruct-8    992B ± 0%
+JSONUnmarshalMap-8      2.98kB ± 0%
+JSONUnmarshalStruct-8     912B ± 0%
+JSONDecoder-8           4.03kB ± 0%
+FFJSONLexer-8             896B ± 0%
+EasyJSONLexer-8           501B ± 0%
+JSONParserGet-8          0.00B     
+JSONIterator-8            677B ± 0%
+ConvertNone-8            0.00B     
+ConvertGet-8            49.2kB ± 0%
+ConvertGetBytes-8        48.0B ± 0%
+
+name                    allocs/op
+GJSONGet-8                0.00     
+GJSONGetMany4Paths-8      0.00     
+GJSONGetMany8Paths-8      0.00     
+GJSONGetMany16Paths-8     0.00     
+GJSONGetMany32Paths-8     0.00     
+GJSONGetMany64Paths-8     0.00     
+GJSONGetMany128Paths-8    0.00     
+GJSONUnmarshalMap-8       26.0 ± 0%
+GJSONUnmarshalStruct-8    4.00 ± 0%
+JSONUnmarshalMap-8        69.0 ± 0%
+JSONUnmarshalStruct-8     12.0 ± 0%
+JSONDecoder-8              160 ± 0%
+FFJSONLexer-8             8.00 ± 0%
+EasyJSONLexer-8           5.00 ± 0%
+JSONParserGet-8           0.00     
+JSONIterator-8            14.0 ± 0%
+ConvertNone-8             0.00     
+ConvertGet-8              1.00 ± 0%
+ConvertGetBytes-8         1.00 ± 0%

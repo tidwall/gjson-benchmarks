@@ -442,7 +442,7 @@ func BenchmarkJSONParserGet(t *testing.B) {
 			} else {
 				// "widget.window.name",
 				// "widget.text.onMouseUp",
-				v, _ := jsonparser.GetString(data, k...)
+				v, _ := jsonparser.GetUnsafeString(data, k...)
 				if v == "" {
 					t.Fatal("did not find the value")
 				}
