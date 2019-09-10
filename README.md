@@ -1,5 +1,7 @@
 # `gjson-benchmarks`
 
+> Ran: 2019-09-10 on a Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz (cap/boost 4.6GHz), 4 cores. Go version 1.13
+
 Benchmarks for [GJSON](https://github.com/tidwall/gjson)
 alongside [encoding/json](https://golang.org/pkg/encoding/json/),
 [ffjson](https://github.com/pquerna/ffjson),
@@ -8,26 +10,32 @@ alongside [encoding/json](https://golang.org/pkg/encoding/json/),
 and [json-iterator](https://github.com/json-iterator/go)
 
 ```
-BenchmarkGJSONGet-8                  3000000        372 ns/op          0 B/op         0 allocs/op
-BenchmarkGJSONUnmarshalMap-8          900000       4154 ns/op       1920 B/op        26 allocs/op
-BenchmarkJSONUnmarshalMap-8           600000       9019 ns/op       3048 B/op        69 allocs/op
-BenchmarkJSONUnmarshalStruct-8        600000       9268 ns/op       1832 B/op        69 allocs/op
-BenchmarkJSONDecoder-8                300000      14120 ns/op       4224 B/op       184 allocs/op
-BenchmarkFFJSONLexer-8               1500000       3111 ns/op        896 B/op         8 allocs/op
-BenchmarkEasyJSONLexer-8             3000000        887 ns/op        613 B/op         6 allocs/op
-BenchmarkJSONParserGet-8             3000000        499 ns/op         21 B/op         0 allocs/op
-BenchmarkJSONIterator-8              3000000        812 ns/op        544 B/op         9 allocs/op
+name                    time/op        bytes/op       allocs/op
+GJSONGet-8               302ns ± 1%        0B           0.0     
+GJSONUnmarshalMap-8     3.55µs ± 3%    1.92kB ± 0%     26.0 ± 0%
+GJSONUnmarshalStruct-8  3.31µs ± 2%      992B ± 0%      4.0 ± 0%
+JSONUnmarshalMap-8      7.12µs ± 1%    2.98kB ± 0%     69.0 ± 0%
+JSONUnmarshalStruct-8   4.84µs ± 2%      912B ± 0%     12.0 ± 0%
+JSONDecoder-8           10.9µs ± 1%    4.03kB ± 0%    160.0 ± 0%
+FFJSONLexer-8           2.69µs ± 7%      896B ± 0%      8.0 ± 0%
+EasyJSONLexer-8          846ns ± 2%      501B ± 0%      5.0 ± 0%
+JSONParserGet-8          332ns ±10%        0B           0.0     
+JSONIterator-8           914ns ± 1%      677B ± 0%     14.0 ± 0%
+ConvertNone-8           18.7µs ± 3%        0B           0.0     
+ConvertGet-8            29.8µs ± 2%    49.2kB ± 0%      1.0 ± 0%
+ConvertGetBytes-8       18.7µs ± 2%     48.0B ± 0%      1.0 ± 0% 
 ```
 
 Benchmarks for the `GetMany` function:
 
 ```
-BenchmarkGJSONGetMany4Paths-8        4000000       303 ns/op         112 B/op         0 allocs/op
-BenchmarkGJSONGetMany8Paths-8        8000000       208 ns/op          56 B/op         0 allocs/op
-BenchmarkGJSONGetMany16Paths-8      16000000       156 ns/op          56 B/op         0 allocs/op
-BenchmarkGJSONGetMany32Paths-8      32000000       127 ns/op          64 B/op         0 allocs/op
-BenchmarkGJSONGetMany64Paths-8      64000000       117 ns/op          64 B/op         0 allocs/op
-BenchmarkGJSONGetMany128Paths-8    128000000       109 ns/op          64 B/op         0 allocs/op
+name                     time/op        bytes/op        allocs/op
+GJSONGetMany4Paths-8     313ns ± 2%     56.0B ± 0%      0.00     
+GJSONGetMany8Paths-8     324ns ± 1%     56.0B ± 0%      0.00     
+GJSONGetMany16Paths-8    337ns ± 1%     56.0B ± 0%      0.00     
+GJSONGetMany32Paths-8    335ns ± 2%     56.0B ± 0%      0.00     
+GJSONGetMany64Paths-8    340ns ± 3%     64.0B ± 0%      0.00     
+GJSONGetMany128Paths-8   351ns ± 1%     64.0B ± 0%      0.00     
 ```
 
 JSON document used:
@@ -83,33 +91,13 @@ widget.text.data
 widget.text.size
 ```
 
-*These benchmarks were run on a MacBook Pro 15" 2.8 GHz Intel Core i7 using Go 1.8.*
-
-Last run: May 10, 2017
-
 ## Usage
 
-If you desire to run this current benchmarks on your local computer,
-you need to install ``go`` and ``dep``.
+> benchstat must be installed
+
+> See output in pretty-results.txt
 
 ```sh
-# install go
-brew install go
-mkdir -p ~/go/src
-export GOPATH=~/go
-# install dep
-brew install dep
-```
-
-Then you can get the repo and run the benchmarks
-
-```sh
-# get the repo source files
-go get -u github.com/tidwall/gjson-benchmarks
-# go to the sources files
-cd $GOPATH/src/github.com/tidwall/gjson-benchmarks
-# make sure you have the same packages version
-dep ensure
-# finally run the tests
-go test -v -bench=.
+go mod download
+./run.sh
 ```
