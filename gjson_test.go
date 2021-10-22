@@ -1,3 +1,4 @@
+//lint:file-ignore SA3001 calcs against three paths
 package gjson_benchmarks
 
 import (
@@ -85,22 +86,29 @@ func BenchmarkGJSONGet(t *testing.B) {
 	}
 	t.N *= len(benchPaths) // because we are running against 3 paths
 }
+
 func BenchmarkGJSONGetMany4Paths(t *testing.B) {
+	t.Skip()
 	benchmarkGJSONGetManyN(t, 4)
 }
 func BenchmarkGJSONGetMany8Paths(t *testing.B) {
+	t.Skip()
 	benchmarkGJSONGetManyN(t, 8)
 }
 func BenchmarkGJSONGetMany16Paths(t *testing.B) {
+	t.Skip()
 	benchmarkGJSONGetManyN(t, 16)
 }
 func BenchmarkGJSONGetMany32Paths(t *testing.B) {
+	t.Skip()
 	benchmarkGJSONGetManyN(t, 32)
 }
 func BenchmarkGJSONGetMany64Paths(t *testing.B) {
+	t.Skip()
 	benchmarkGJSONGetManyN(t, 64)
 }
 func BenchmarkGJSONGetMany128Paths(t *testing.B) {
+	t.Skip()
 	benchmarkGJSONGetManyN(t, 128)
 }
 func benchmarkGJSONGetManyN(t *testing.B, n int) {
@@ -153,33 +161,33 @@ func BenchmarkGJSONUnmarshalMap(t *testing.B) {
 	t.N *= len(benchPaths) // because we are running against 3 paths
 }
 
-func BenchmarkGJSONUnmarshalStruct(t *testing.B) {
-	t.ReportAllocs()
-	t.ResetTimer()
-	for i := 0; i < t.N; i++ {
-		for j := 0; j < len(benchPaths); j++ {
-			var s BenchStruct
-			if err := gjson.Unmarshal([]byte(exampleJSON), &s); err != nil {
-				t.Fatal(err)
-			}
-			switch benchPaths[j] {
-			case "widget.window.name":
-				if s.Widget.Window.Name == "" {
-					t.Fatal("did not find the value")
-				}
-			case "widget.image.hOffset":
-				if s.Widget.Image.HOffset == 0 {
-					t.Fatal("did not find the value")
-				}
-			case "widget.text.onMouseUp":
-				if s.Widget.Text.OnMouseUp == "" {
-					t.Fatal("did not find the value")
-				}
-			}
-		}
-	}
-	t.N *= len(benchPaths) // because we are running against 3 paths
-}
+// func BenchmarkGJSONUnmarshalStruct(t *testing.B) {
+// 	t.ReportAllocs()
+// 	t.ResetTimer()
+// 	for i := 0; i < t.N; i++ {
+// 		for j := 0; j < len(benchPaths); j++ {
+// 			var s BenchStruct
+// 			if err := gjson.Unmarshal([]byte(exampleJSON), &s); err != nil {
+// 				t.Fatal(err)
+// 			}
+// 			switch benchPaths[j] {
+// 			case "widget.window.name":
+// 				if s.Widget.Window.Name == "" {
+// 					t.Fatal("did not find the value")
+// 				}
+// 			case "widget.image.hOffset":
+// 				if s.Widget.Image.HOffset == 0 {
+// 					t.Fatal("did not find the value")
+// 				}
+// 			case "widget.text.onMouseUp":
+// 				if s.Widget.Text.OnMouseUp == "" {
+// 					t.Fatal("did not find the value")
+// 				}
+// 			}
+// 		}
+// 	}
+// 	t.N *= len(benchPaths) // because we are running against 3 paths
+// }
 
 func BenchmarkJSONUnmarshalMap(t *testing.B) {
 	t.ReportAllocs()
