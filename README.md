@@ -79,5 +79,5 @@ Last run: Oct 22, 2021
 ## Usage
 
 ```sh
-go test -v bench .
+go test -bench .
 ```
